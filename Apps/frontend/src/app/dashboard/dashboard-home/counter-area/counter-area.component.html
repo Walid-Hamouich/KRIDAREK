@@ -1,0 +1,69 @@
+<div class="counter-area">
+    @if(loading){
+    <app-loader></app-loader>
+    }
+    @else{
+
+    <div class="row g-3">
+        <div class="col-xl-3 col-md-6">
+            <div class="counter-single two">
+                <div class="counter-icon">
+                    <img class="boxes-png" src="assets/img/dashboard/icon/boxes.png" alt>
+                </div>
+                <div class="counter-content">
+                    <p>Propriétés en totale</p>
+                    <div class="number">
+                        <h3 class="counter">
+                            {{allAnnouncementsCount}}
+                        </h3>
+                        <span>+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="counter-single">
+                <div class="counter-icon">
+                    <img src="assets/img/dashboard/icon/counter-active-property-icon.svg" alt>
+                </div>
+                <div class="counter-content">
+                    <p>Propriété active</p>
+                    <div class="number">
+                        <h3 class="counter">{{publishedAnnouncementsCount}}</h3>
+                        <span>+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="counter-single three">
+                <div class="counter-icon">
+                    <img src="assets/img/dashboard/icon/counter-pending-property-icon.svg" alt>
+                </div>
+                <div class="counter-content">
+                    <p>Propriété en attente</p>
+                    <div class="number">
+                        <h3 class="counter">{{processingAnnouncementsCount}}</h3>
+                        <span>+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="counter-single four">
+                <div class="counter-icon">
+                    <img src="assets/img/dashboard/icon/counter-delete-property-icon.svg" alt>
+                </div>
+                <div class="counter-content">
+                    <p>Supprimer la propriété</p>
+                    <div class="number">
+                        <h3 class="counter">{{deletedAnnouncementsCount}}</h3>
+                        <span>+</span>
+                    </div>
+                </div>
+                <img src="assets/img/dashboard/icon/counter-area-top-vector.svg" alt class="counter-area-vector">
+            </div>
+        </div>
+    </div>
+    }
+</div>

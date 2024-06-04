@@ -1,0 +1,26 @@
+<app-shared-banner currentText="Liste des propriétés" currentPage="Liste des propriétés"></app-shared-banner>
+<div class="product-page pt-100 mb-100">
+    <div class="container">
+        <div class="row g-xl-4 gy-5">
+            <div class="col-xl-8">
+                <div class="row mb-40">
+                    <app-show-items-filter [announcementsCount]="this.getAnnouncements.length"></app-show-items-filter>
+                </div>
+                @if(this.getLoading){
+                <app-loader></app-loader>
+                } @else if(this.getErrorMessage) {
+                <div class="alert alert-danger">{{this.getErrorMessage}}</div>
+                } @else if(this.getAnnouncements.length > 0) {
+                <app-list [currentPage]="this.getCurrentPage" (newPage)="changePage($event)"
+                    [annoucmentsHydraView]="this.getHydraView" [announcements]="this.getAnnouncements"></app-list>
+                } @else {
+                <div class="alert alert-warning">Il y'a aucune announce!</div>
+                }
+            </div>
+            <div class="col-xl-4">
+                <app-filter-area></app-filter-area>
+                <app-sidebar (search)="filter($event.city || '')"></app-sidebar>
+            </div>
+        </div>
+    </div>
+</div>

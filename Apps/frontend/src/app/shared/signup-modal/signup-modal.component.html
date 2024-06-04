@@ -1,0 +1,241 @@
+<div class="modal signUp-modal two fade" id="signUpModal01" tabindex="-1" aria-labelledby="signUpModal01Label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="login-wrapper">
+                    <div class="login-img">
+                        <img src="assets/img/home/login-img.png" alt>
+                        <div class="logo">
+                            <a routerLink="/">
+                                <img class="treac-logo" src="/assets/img/treac-logo2.svg" alt>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="login-content">
+                        <div class="login-header">
+                            <h4 class="modal-title" id="signUpModal01Label">S'inscrire</h4>
+                            <p>Vous avez déjà un compte? <button type="button" data-bs-toggle="modal"
+                                    data-bs-target="#logInModal01">Se connecter</button></p>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                                    class="bi bi-x"></i></button>
+                        </div>
+                        @if(getResponseMessage !== null){
+                        <p class="text-{{getResponseType}}">{{getResponseMessage}}</p>
+                        }
+                        <p></p>
+                        <form [style]="'opacity : '+(singUpForm.disabled ? '0.5' : '1')" [formGroup]="singUpForm"
+                            (submit)="submit()">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="form-inner">
+                                        <label>Prenom*</label>
+                                        <input formControlName="firstName" type="text" placeholder="Ahmed">
+                                        @if (validatorChecker.
+                                        checkFormControlInitialError(firstName, hasSubmitted)) {
+                                        <small class="text-danger">
+                                            @if(validatorChecker.checkFormControlError(firstName, 'required')){
+                                            Ce champ est obligatoire
+                                            }
+                                        </small>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-inner">
+                                        <label>Nom*</label>
+                                        <input formControlName="lastName" type="text" placeholder="El Mostafa">
+                                        @if (validatorChecker.
+                                        checkFormControlInitialError(lastName, hasSubmitted)) {
+                                        <small class="text-danger">
+                                            @if(validatorChecker.checkFormControlError(lastName, 'required')){
+                                            Ce champ est obligatoire
+                                            }
+                                        </small>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-inner">
+                                        <label>Entrez votre adresse email*</label>
+                                        <input formControlName="email" type="email" placeholder="Tapez l'email">
+                                        @if (validatorChecker.checkFormControlInitialError(email, hasSubmitted)) {
+                                        <small class="text-danger">
+                                            @if(validatorChecker.checkFormControlError(email, 'required')){
+                                            Ce champ est obligatoire
+                                            }
+                                            @else if(validatorChecker.checkFormControlError(email, 'email')){
+                                            Cet e-mail n'est pas valide
+                                            }
+                                        </small>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-inner">
+                                        <label>Entrez votre numéro de télephone</label>
+                                        <input formControlName="phoneNumber" type="tel" placeholder="0612345678">
+                                        @if (validatorChecker.
+                                        checkFormControlInitialError(phoneNumber, hasSubmitted)) {
+                                        <small class="text-danger">
+                                            @if(validatorChecker.checkFormControlError(phoneNumber, 'required')){
+                                            Ce champ est obligatoire
+                                            } @else if(validatorChecker.
+                                            checkFormControlError(phoneNumber, 'pattern')){
+                                            Ce numéro de télephone n'est pas valide
+                                            }
+                                        </small>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-inner">
+                                        <label>Mot de passe*</label>
+                                        <input formControlName="password" id="password" type="password"
+                                            placeholder="*** ***">
+                                        <i class="bi bi-eye-slash" id="togglePassword"></i>
+                                    </div>
+                                    @if (validatorChecker.
+                                    checkFormControlInitialError(password, hasSubmitted)) {
+                                    <small class="text-danger">
+                                        @if(validatorChecker.
+                                        checkFormControlError(password, 'required')){
+                                        Ce champ est obligatoire!
+                                        }
+                                    </small>
+                                    }
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-inner">
+                                        <label>Confirmez le mot de passe*</label>
+                                        <input formControlName="confirmPassword" id="password2" type="password"
+                                            placeholder="*** ***">
+                                        <i class="bi bi-eye-slash" id="togglePassword2"></i>
+                                    </div>
+                                    @if ((confirmPassword?.touched || hasSubmitted) && validatorChecker.
+                                    checkFormControlError(singUpForm, 'passwordMatching')) {
+                                    <small class="text-danger">
+                                        Le mot de passe et la confirmation du mot de passe ne sont
+                                        pas égaux!
+                                    </small>
+                                    }
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-inner">
+                                        <button class="primary-btn2" type="submit">S'Inscrire Maintenant</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="terms-conditon">
+                                <p>En vous inscrivant, vous acceptez les<a href="#">« termes et conditions »</a></p>
+                            </div>
+                            <ul class="social-icon">
+                                <li><a href="#"><img src="assets/img/home/icon/google.svg" alt></a></li>
+                                <li><a href="#"><img src="assets/img/home/icon/facebook.svg" alt></a></li>
+                                <li><a href="#"><img src="assets/img/home/icon/twiter.svg" alt></a></li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal signUp-modal sell-with-us fade" id="sellUsModal01" tabindex="-1" aria-labelledby="sellUsModal01Label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="sellUsModal01Label">Sell Your Car</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="bi bi-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12 mb-15">
+                            <h5>Your Personal Info</h5>
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <div class="form-inner">
+                                <label>Full Name*</label>
+                                <input type="text" placeholder="Full Name*">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <div class="form-inner">
+                                <label>Phone*</label>
+                                <input type="text" placeholder="+880- 123 234 ***">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <div class="form-inner">
+                                <label>Email (Optional)</label>
+                                <input type="text" placeholder="Enter your email address">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <div class="form-inner">
+                                <label>Location*</label>
+                                <input type="text" placeholder="Enter your address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 mb-15 mt-25">
+                            <h5>Your Car Info</h5>
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <div class="form-inner">
+                                <label>Car Brand Name*</label>
+                                <input type="text" placeholder="Toyota">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <div class="form-inner">
+                                <label>Model*</label>
+                                <input type="text" placeholder="RS eTN 80">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <div class="form-inner">
+                                <label>Reg. Year*</label>
+                                <input type="text" placeholder="2022">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <div class="form-inner">
+                                <label>Mileage*</label>
+                                <input type="text" placeholder="23,456 miles">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <div class="form-inner">
+                                <label>Fuel Type*</label>
+                                <input type="text" placeholder="Petrol">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <div class="form-inner">
+                                <label>Selling Price*</label>
+                                <input type="text" placeholder="Ex- $23,342.000">
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-35">
+                            <div class="form-inner">
+                                <label>Your Car Note*</label>
+                                <textarea placeholder="Write somethings"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-inner">
+                                <button class="primary-btn2" type="submit">Submit Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

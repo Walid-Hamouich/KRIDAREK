@@ -1,0 +1,7 @@
+<div class="list-grid-main">
+    <div class="list-grid-product-wrap grid-group-wrapper">
+        <app-cards [announcements]="this.announcements"></app-cards>
+        <app-pagination [currentPage]="currentPage" (newPage)="newPage.emit($event)"
+            [announcementsHydraView]="annoucmentsHydraView"></app-pagination>
+    </div>
+</div>

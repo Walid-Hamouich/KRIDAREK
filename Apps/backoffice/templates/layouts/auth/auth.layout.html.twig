@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% set bodyClass = type ~ '-page bg-body-secondary' %}
+
+{% block body %}
+	<div class="{{type}}-box">
+		<div class="{{type}}-logo">
+			{% block logo %}{% endblock %}
+		</div>
+		<!-- /.login-logo -->
+		<div class="card">
+			{{ include('partials/_flash_messages.html.twig') }}
+			<div class="card-body {{type}}-card-body">
+				{% block card %}{% endblock %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

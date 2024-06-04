@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    min-height: 100vh;
+}
+
+.treac-logo {
+    width: 170px;
+}
+
+[data-ugly-select] {
+    display: block;
+    padding: .5em;
+    width: 100%;
+}
+
+header.style-3 .main-menu ul li a.active {
+    color: var(--primary-color1)
+}
+
+@media only screen and (min-width: 1181px) {
+    .__d-lg-flex {
+        display: flex !important;
+    }
+
+    .__d-lg-none {
+        display: none !important;
+    }
+}

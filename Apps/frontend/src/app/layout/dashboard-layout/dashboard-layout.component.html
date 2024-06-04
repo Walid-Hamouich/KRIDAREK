@@ -1,0 +1,8 @@
+<app-header></app-header>
+<div class="dashboard-wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="main-content">
+        <router-outlet (activate)="utils.reExecuteScript()"></router-outlet>
+    </div>
+    <app-footer></app-footer>
+</div>

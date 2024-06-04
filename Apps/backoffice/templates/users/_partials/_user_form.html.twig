@@ -1,0 +1,120 @@
+<h1 class="text-center mb-2">{{form_title}}</h1>
+{{form_start(form, {
+    attr: {
+    }
+})}}
+<div class="form-group mb-3">
+	{{form_label(form.firstName, null, {
+    'label_attr': {
+        'class': 'form-label'
+    }
+    })
+    
+    }}
+	{{form_widget(form.firstName, {
+    'attr': {
+        'class': 'form-control'
+    }
+    })}}
+	<small class="text-danger">{{form_errors(form.firstName)}}</small>
+</div>
+<div class="mb-3">
+	{{form_label(form.lastName, null, {
+    'label_attr': {
+        'class': 'form-label'
+    }
+    })
+    
+    }}
+	{{form_widget(form.lastName, {
+    'attr': {
+        'class': 'form-control'
+    }
+    })}}
+	<small class="text-danger">{{form_errors(form.lastName)}}</small>
+</div>
+<div class="mb-3">
+	{{form_label(form.email, null, {
+    'label_attr': {
+        'class': 'form-label'
+    }
+    })
+    
+    }}
+	{{form_widget(form.email, {
+    'attr': {
+        'class': 'form-control'
+    }
+    })}}
+	<small class="text-danger">{{form_errors(form.email)}}</small>
+</div>
+{% if contains_password %}
+	<div class="mb-3">
+		{{form_label(form.password, null, {
+    'label_attr': {
+        'class': 'form-label'
+    }
+    })
+    
+    }}
+		{{form_widget(form.password, {
+    'attr': {
+        'class': 'form-control'
+    }
+    })}}
+		<small class="text-danger">{{form_errors(form.password)}}</small>
+	</div>
+{% endif %}
+
+<div class="mb-3">
+	{{form_label(form.phoneNum, null, {
+    'label_attr': {
+        'class': 'form-label'
+    }
+    })
+    
+    }}
+	{{form_widget(form.phoneNum, {
+    'attr': {
+        'class': 'form-control'
+    }
+    })}}
+	<small class="text-danger">{{form_errors(form.phoneNum)}}</small>
+</div>
+<div class="mb-3">
+	{{form_label(form.roles, null, {
+    'label_attr': {
+        'class': 'form-label'
+    }
+    })
+    
+    }}
+	{{form_widget(form.roles, {
+    'attr': {
+        'class': 'form-select'
+    }
+    })}}
+	<small class="text-danger">{{form_errors(form.roles)}}</small>
+</div>
+<div class="mb-3">
+	{{form_widget(form.blackListed, {
+    'attr': {
+        'class': 'form-check-input'
+    }
+    })}}
+	{{form_label(form.blackListed, null, {
+    'label_attr': {
+        'class': 'form-check-label'
+    }
+    })}}
+	<small class="text-danger">{{form_errors(form.blackListed)}}</small>
+</div>
+<div class="mb-3">
+	{{form_widget(form.save, {
+    'label': btn_label,
+    'attr': {
+        'class': 'btn btn-success'
+    },
+    })}}
+</div>
+{{form_end(form)}}

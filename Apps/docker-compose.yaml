@@ -1,0 +1,74 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend-c
+    ports:
+      - 4200:4200
+    volumes:
+      - ./frontend:/var/www/app/
+      - treac-frontend-node_modules:/var/www/app/node_modules
+
+  backoffice:
+    build: ./backoffice
+    container_name: backoffice-c
+    volumes:
+      - ./backoffice:/var/www/app
+
+  database:
+    image: mysql:8.0.36-debian
+    volumes:
+      - treac-db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'superSecr3t'
+      MYSQL_USER: 'app_user'
+      MYSQL_PASSWORD: 't3rceS'
+      MYSQL_DATABASE: 'treac'
+
+  myadmin:
+    image: phpmyadmin:5.2.1-apache
+    environment:
+      PMA_HOST: database
+    ports:
+      - "8080:80"
+    depends_on:
+      - database
+    volumes:
+      - treac-db-admin-data:/var/www/html
+
+  minio:
+    image: minio/minio:RELEASE.2024-04-18T19-09-19Z.fips
+    container_name: minio4php
+    ports:
+      - 9090:9000
+      - 9091:9001
+    command: server --console-address ':9001' /data
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+
+  api:
+    build: ./api
+    container_name: api-c
+    depends_on:
+      - database
+    volumes:
+      - ./api:/var/www/app
+
+  webserver:
+    image: nginx:1.25-alpine
+    container_name: webserver-c
+    ports:
+      - "8000:80" # BACKOFFICE
+      - "9000:81" # API-PLATFORM
+    volumes:
+      - ./backoffice:/var/www/app
+      - ./api:/var/www/api
+      - ./nginx/:/etc/nginx/conf.d
+
+volumes:
+  treac-frontend-node_modules:
+  treac-db-data:
+  treac-db-admin-data:
+  treac-backoffice-vendor:

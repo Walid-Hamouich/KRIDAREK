@@ -1,0 +1,18 @@
+{% extends "layouts/dashboard/dashboard.layout.html.twig" %}
+
+{% block title 'Ajouter un utilisateur ' ~ parent() %}
+
+{% block content %}
+
+	<a href="{{path('app_users_index')}}" class="btn btn-outline-secondary m-3">Retour à la liste</a>
+	<div class="container" style="width: clamp(250px, 50%,960px)">
+		{{ 
+		include('users/_partials/_user_form.html.twig', {
+			contains_password: true,
+			form_title: 'Ajouter un utilisateur',
+			btn_label: 'Sauvegardez'
+		})
+	}}
+	</div>
+
+{% endblock %}

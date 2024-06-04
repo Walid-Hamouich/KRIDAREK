@@ -1,0 +1,42 @@
+<td data-label="Property Info">
+    <div class="property-info-wrapper">
+        <div class="property-info-img">
+            <img src="{{images[0].startsWith('http') ? images[0] : 
+            'http://localhost:9000/minio/images/'+images[0]}}" alt>
+        </div>
+        <div class="property-info-content">
+            <div class="location">
+                <a routerLink="/property-details/{{id}}"><i class="bi bi-geo-alt"></i>
+                    {{city.label}}
+                </a>
+            </div>
+            <h6><a routerLink="/property-details/{{id}}">{{title}}</a>
+            </h6>
+            <a routerLink="/property-details/{{id}}" class="view-details">
+                <img src="assets/img/dashboard/icon/view-details-icon.svg" alt>
+                Voir les détails
+            </a>
+        </div>
+    </div>
+</td>
+<td data-label="Listed Date" class="table-product">
+    <span>{{createdAt}}</span>
+</td>
+<td data-label="Price Range">
+    <span>{{price}} MAD</span>
+</td>
+<td data-label="Property Status">
+    <span class="yellow">{{property.action}}</span>
+</td>
+<td data-label="Area (Sq.ft)">
+    <span>{{area}} m<sup>2</sup></span>
+</td>
+<td data-label="Status">
+    <span>{{announcement.status}}</span>
+</td>
+<td data-label="Action">
+    <ul class="action-buttons">
+        <li><img src="assets/img/dashboard/icon/action-edit-btn.svg" alt></li>
+        <li (click)="deleteFunc()"><img src="assets/img/dashboard/icon/action-delete-btn.svg" alt></li>
+    </ul>
+</td>

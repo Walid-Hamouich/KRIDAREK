@@ -1,0 +1,73 @@
+{% extends 'layouts/dashboard/dashboard.layout.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('assets/css/announcements/index.css')}}">
+{% endblock %}
+
+{% block title %}
+	Validation des annonces |
+	{{parent()}}
+{% endblock %}
+
+{% block content %}
+	<div class="container mt-2">
+		<form class="needs-validation my-2">
+			<div class="col-md-6">
+				<label for="validationCustom04" class="form-label">Les statuts</label>
+				<select name="status" class="form-select" id="validationCustom04" required>
+					<option selected value="Tous">Tous</option>
+					{% for status in statuses %}
+
+						<option {{ (activeStatus == status) ? 'selected' : ''}}>{{status}}</option>
+					{% endfor %}
+				</select>
+				<div class="invalid-feedback">
+					Veuillez sélectionner une statue valide.
+				</div>
+			</div>
+			<button type="submit" class="btn btn-info mt-2">Rechercher</button>
+		</form>
+		<!--end::Col-->
+		<!--begin::Col-->
+		<div class="row row-cols-1 row-cols-md-3 g-4">
+			{% for announcement in announcements %}
+				<div class="col">
+					<div class="card h-100">
+						<img height="250" src="{{ announcement.images[0] }}" class="card-img-top object-fit-cover" alt="...">
+						<div class="card-body announce-body-card d-flex flex-column">
+							<h5 class="card-title float-none">{{announcement.title}}</h5>
+							<p class="card-text">{{announcement.description|length < 20 ? announcement.description : announcement.description|slice(0, 19)~'...'}}</p>
+							<div class="announce-body-card__grid">
+								<a style="grid-area: view;" href="{{path('app_announcements_show', { slug: announcement.slug })}}" class="btn btn-primary">Consulter</a>
+								<a style="grid-area: edit;" href="#" class="btn btn-warning">Modifier</a>
+								{% if announcement.status == 'En cours de traitement' %}
+									<form style="grid-area: validate;" onclick="return confirm('Vous êtes sûre que vous voulez valider l\'annonce avec le titre: {{announcement.title}}')" action="{{ path('app_announcements_validate', { id: announcement.id }) }}" method="POST">
+										<button class="btn btn-dark w-100">Valider</button>
+										<input type="hidden" name="_method" value="PATCH">
+									</form>
+									<form style="grid-area: reject;" onclick="return confirm('Vous êtes sûre que vous voulez rejeter l\'annonce avec le titre: {{announcement.title}}')" action="{{ path('app_announcements_reject', { id: announcement.id }) }}" method="POST">
+										<button class="btn btn-info w-100">Rejeter</button>
+										<input type="hidden" name="_method" value="PATCH">
+									</form>
+								{% endif %}
+
+								<form style="grid-area: delete;" onclick="return confirm('Vous êtes sûre que vous voulez supprimer l\'annonce avec le titre: {{announcement.title}}')" action="{{ path('app_announcements_remove', { id: announcement.id }) }}" method="POST">
+									<button class="btn btn-danger w-100">Supprimer</button>
+									<input type="hidden" name="_method" value="DELETE">
+								</form>
+							</div>
+							<div class="mt-auto">
+								<p class="mt-2">Statut:
+									{{announcement.status}}</p>
+								<p class="card-text">
+									<small class="text-muted">Publié en
+										{{announcement.createdAt|date('Y-m-d')}}</small>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

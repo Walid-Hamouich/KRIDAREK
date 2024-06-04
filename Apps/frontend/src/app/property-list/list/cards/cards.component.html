@@ -1,0 +1,6 @@
+<div class="row g-4 justify-content-center mb-40">
+    @for (announcement of this.announcements; track $index) {
+    <app-card [announcement]="announcement" class="col-lg-6 col-md-6 col-sm-12 wow fadeInUp item"
+        data-wow-delay="200ms"></app-card>
+    }
+</div>

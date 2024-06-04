@@ -1,0 +1,260 @@
+<form [formGroup]="this.searchForm" class="product-sidebar">
+    <div class="product-widget mb-20">
+        <div class="check-box-item">
+            <h6 class="product-widget-title mb-20">Trouvez votre maison</h6>
+            <div class="checkbox-container">
+                <div class="row g-3">
+                    <!-- <div class="col-12">
+                        <div class="form-inner">
+                            <label>Type de propriété</label>
+                            <select>
+                                <option value="1">Industriel</option>
+                                <option value="2">Développement</option>
+                                <option value="3">Soins de santé</option>
+                                <option value="4">Hôtel</option>
+                                <option value="5">Office</option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <div class="col-12">
+                        <div class="form-inner">
+                            <label>Locations</label>
+                            <select data-ugly-select formControlName="city">
+                                @for (city of this.getCities; track $index) {
+                                <option [value]="city">
+                                    {{city}}
+                                </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <!-- <div class="col-6">
+                        <div class="form-inner">
+                            <label>Min.Prix</label>
+                            <select>
+                                <option value="1">$2,345</option>
+                                <option value="2">$2,545</option>
+                                <option value="3">$2,845</option>
+                                <option value="4">$3,345</option>
+                                <option value="5">$3,545</option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <!-- <div class="col-6">
+                        <div class="form-inner">
+                            <label>Max.Prix</label>
+                            <select>
+                                <option value="1">$12,345</option>
+                                <option value="2">$13,345</option>
+                                <option value="3">$14,345</option>
+                                <option value="4">$15,345</option>
+                                <option value="5">$16,345</option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <!-- <div class="col-12">
+                        <div class="form-inner">
+                            <label>Min.Chambre à coucher</label>
+                            <select>
+                                <option value="1">02 Chambre à coucher</option>
+                                <option value="2">03 Chambre à coucher</option>
+                                <option value="3">04 Chambre à coucher</option>
+                                <option value="4">05 Chambre à coucher</option>
+                                <option value="5">06 Chambre à coucher</option>
+                            </select>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- <div class="button-group">
+                    <a (click)="$event.preventDefault();searchEmitter()" class="primary-btn3" href="#">À vendre</a>
+                    <a (click)="$event.preventDefault();searchEmitter()" class="primary-btn6" href="#">À louer</a>
+                </div> -->
+                <div class="col-lg-12">
+                    <div class="search-btn">
+                        <button (click)="searchEmitter()" type="submit" class="primary-btn3"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                                <path
+                                    d="M10.2746 9.04904C11.1219 7.89293 11.5013 6.45957 11.3371 5.0357C11.1729 3.61183 10.4771 2.30246 9.38898 1.36957C8.30083 0.436668 6.90056 -0.050966 5.46831 0.00422091C4.03607 0.0594079 2.67747 0.653346 1.66433 1.66721C0.651194 2.68107 0.0582276 4.04009 0.00406556 5.47238C-0.0500965 6.90466 0.43854 8.30458 1.37222 9.39207C2.30589 10.4795 3.61575 11.1744 5.03974 11.3376C6.46372 11.5008 7.89682 11.1203 9.05232 10.2722H9.05145C9.07769 10.3072 9.10569 10.3405 9.13719 10.3729L12.5058 13.7415C12.6699 13.9057 12.8924 13.9979 13.1245 13.998C13.3566 13.9981 13.5793 13.906 13.7435 13.7419C13.9076 13.5779 13.9999 13.3553 14 13.1232C14.0001 12.8911 13.908 12.6685 13.7439 12.5043L10.3753 9.13566C10.344 9.104 10.3104 9.07475 10.2746 9.04817V9.04904ZM10.5004 5.68567C10.5004 6.31763 10.3759 6.9434 10.1341 7.52726C9.89223 8.11112 9.53776 8.64162 9.0909 9.08849C8.64403 9.53535 8.11352 9.88983 7.52967 10.1317C6.94581 10.3735 6.32003 10.498 5.68807 10.498C5.05611 10.498 4.43034 10.3735 3.84648 10.1317C3.26262 9.88983 2.73211 9.53535 2.28525 9.08849C1.83838 8.64162 1.48391 8.11112 1.24207 7.52726C1.00023 6.9434 0.875753 6.31763 0.875753 5.68567C0.875753 4.40936 1.38276 3.18533 2.28525 2.28284C3.18773 1.38036 4.41177 0.873346 5.68807 0.873346C6.96438 0.873346 8.18841 1.38036 9.0909 2.28284C9.99338 3.18533 10.5004 4.40936 10.5004 5.68567Z" />
+                            </svg> Recherche
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="product-widget mb-20">
+        <div class="check-box-item">
+            <h6 class="product-widget-title mb-20">Autre Filtre</h6>
+            <div class="checkbox-container">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="form-inner">
+                            <label>Min.Chambre à coucher</label>
+                            <select>
+                                <option value="1">02 Chambre à coucher</option>
+                                <option value="2">03 Chambre à coucher</option>
+                                <option value="3">04 Chambre à coucher</option>
+                                <option value="4">05 Chambre à coucher</option>
+                                <option value="5">06 Chambre à coucher</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-inner">
+                            <label>Min.Pi2</label>
+                            <select>
+                                <option value="1">2,345 pi</option>
+                                <option value="2">2,545 pi</option>
+                                <option value="3">2,845 pi</option>
+                                <option value="4">3,345 pi</option>
+                                <option value="5">3,545 pi</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-inner">
+                            <label>Max.Pi2</label>
+                            <select>
+                                <option value="1">12,345 pi</option>
+                                <option value="2">13,345 pi</option>
+                                <option value="3">14,345 pi</option>
+                                <option value="4">15,345 pi</option>
+                                <option value="5">16,345 pi</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-inner">
+                            <label>Année de construction</label>
+                            <select>
+                                <option value="1">2019</option>
+                                <option value="2">2020</option>
+                                <option value="3">2021</option>
+                                <option value="4">2022</option>
+                                <option value="5">2023</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="more-facilities">
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h5 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                            aria-expanded="false" aria-controls="flush-collapseOne">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10"
+                                                viewBox="0 0 12 10">
+                                                <path
+                                                    d="M2.48751 0V8.0272L3.17083 7.36221L3.91809 8.09055L1.95904 10L0 8.09055L0.747258 7.36221L1.43057 8.0272V0H2.48751ZM7.24376 7.72638V8.75657H4.6014V7.72638H7.24376ZM8.82917 5.15092V6.18111H4.6014V5.15092H8.82917ZM10.4146 2.57546V3.60565H4.6014V2.57546H10.4146ZM12 0V1.03018H4.6014V0H12Z" />
+                                            </svg>
+                                            Plus d'installations
+                                        </button>
+                                    </h5>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <ul class="color-area">
+                                                <li>
+                                                    <label class="containerss">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                        <span class="text">Cheminée</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label class="containerss">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                        <span class="text">Centre Fitness</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label class="containerss">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                        <span class="text">Garage</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label class="containerss">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                        <span class="text">Cuisine gastronomique</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label class="containerss">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                        <span class="text">Vert </span>
+                                                        <span class="qty">(89)</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label class="containerss">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                        <span class="text">Cuisine gastronomique</span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                            <ul class="color-area">
+                                                <li>
+                                                    <label class="containerss">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                        <span class="text">Systèmes d'alarme</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label class="containerss">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                        <span class="text">Cour de récréation</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label class="containerss">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                        <span class="text">Piscine</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label class="containerss">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                        <span class="text">Club-house</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label class="containerss">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                        <span class="text">Beige</span>
+                                                        <span class="qty">(35)</span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="search-btn">
+                            <button (click)="searchEmitter()" type="submit" class="primary-btn3"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                                    <path
+                                        d="M10.2746 9.04904C11.1219 7.89293 11.5013 6.45957 11.3371 5.0357C11.1729 3.61183 10.4771 2.30246 9.38898 1.36957C8.30083 0.436668 6.90056 -0.050966 5.46831 0.00422091C4.03607 0.0594079 2.67747 0.653346 1.66433 1.66721C0.651194 2.68107 0.0582276 4.04009 0.00406556 5.47238C-0.0500965 6.90466 0.43854 8.30458 1.37222 9.39207C2.30589 10.4795 3.61575 11.1744 5.03974 11.3376C6.46372 11.5008 7.89682 11.1203 9.05232 10.2722H9.05145C9.07769 10.3072 9.10569 10.3405 9.13719 10.3729L12.5058 13.7415C12.6699 13.9057 12.8924 13.9979 13.1245 13.998C13.3566 13.9981 13.5793 13.906 13.7435 13.7419C13.9076 13.5779 13.9999 13.3553 14 13.1232C14.0001 12.8911 13.908 12.6685 13.7439 12.5043L10.3753 9.13566C10.344 9.104 10.3104 9.07475 10.2746 9.04817V9.04904ZM10.5004 5.68567C10.5004 6.31763 10.3759 6.9434 10.1341 7.52726C9.89223 8.11112 9.53776 8.64162 9.0909 9.08849C8.64403 9.53535 8.11352 9.88983 7.52967 10.1317C6.94581 10.3735 6.32003 10.498 5.68807 10.498C5.05611 10.498 4.43034 10.3735 3.84648 10.1317C3.26262 9.88983 2.73211 9.53535 2.28525 9.08849C1.83838 8.64162 1.48391 8.11112 1.24207 7.52726C1.00023 6.9434 0.875753 6.31763 0.875753 5.68567C0.875753 4.40936 1.38276 3.18533 2.28525 2.28284C3.18773 1.38036 4.41177 0.873346 5.68807 0.873346C6.96438 0.873346 8.18841 1.38036 9.0909 2.28284C9.99338 3.18533 10.5004 4.40936 10.5004 5.68567Z" />
+                                </svg> Recherche
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</form>

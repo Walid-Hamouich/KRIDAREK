@@ -1,0 +1,9 @@
+twig:
+    file_name_pattern: '*.twig'
+
+    globals:
+        company_name: KRIDAREK
+
+when@test:
+    twig:
+        strict_variables: true

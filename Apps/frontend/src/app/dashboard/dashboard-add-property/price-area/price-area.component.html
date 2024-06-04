@@ -1,0 +1,82 @@
+<div class="col-xxl-4 col-xl-3">
+    <div class="add-property-icon-content">
+        <div class="add-property-icon">
+            <img src="assets/img/dashboard/icon/property-price-area-icon.svg" alt>
+        </div>
+        <h6>Prix et superficie</h6>
+        <span></span>
+    </div>
+</div>
+<div class="col-xxl-8 col-xl-9">
+    <div class="add-property-form-wrapper">
+        <div class="add-property-form-title">
+            <h6>Prix et superficie</h6>
+        </div>
+        <form [formGroup]="addPropertyForm">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-inner mb-30">
+                        <label>Taille de la zone en m2*</label>
+                        <div class="row g-4">
+                            <div class="col-lg-9">
+                                <input formControlName="area" type="text" placeholder="Taille de la zone de saisie">
+                                @if (validatorChecker.
+                                checkFormControlInitialError(area, isSubmitted)) {
+                                <small class="text-danger">
+                                    @if(validatorChecker.checkFormControlError(area,
+                                    'required')){
+                                    Ce champ est obligatoire
+                                    } @else if(validatorChecker.checkFormControlError(area,
+                                    'pattern')){
+                                    Ce champs doit avoir un superficie valide
+                                    }
+                                </small>
+                                }
+                            </div>
+                            <!-- <div class="col-lg-3">
+                                <div class="form-inner">
+                                    <select>
+                                        <option>Sélectionnez l'unité</option>
+                                        <option>Sq.ft</option>
+                                        <option>Cm</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-inner mb-30">
+                        <label>Prix*</label>
+                        <div class="row g-4">
+                            <div class="col-lg-9">
+                                <input formControlName="price" type="text" placeholder="Tapez le prix">
+                                @if (validatorChecker.
+                                checkFormControlInitialError(price, isSubmitted)) {
+                                <small class="text-danger">
+                                    @if(validatorChecker.checkFormControlError(price,
+                                    'required')){
+                                    Ce champ est obligatoire
+                                    } @else if(validatorChecker.checkFormControlError(price,
+                                    'pattern')){
+                                    Ce champs doit avoir un prix valide
+                                    }
+                                </small>
+                                }
+                            </div>
+                            <!-- <div class="col-lg-3">
+                                <div class="form-inner">
+                                    <select>
+                                        <option>Devise</option>
+                                        <option>Dolar(USD)</option>
+                                        <option>Dirham(MAD)</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

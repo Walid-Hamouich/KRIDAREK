@@ -1,0 +1,12 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+# api_login:
+#     path: /api/login
+#     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+#     methods: ['POST']
+#     defaults:
+#         template: base.html.twig

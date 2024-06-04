@@ -1,0 +1,14 @@
+.username-container {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+#user-icon {
+    fill: var(--primary-color1);
+}
+
+.user-lastname {
+    color: white;
+    font-size: .8rem;
+}

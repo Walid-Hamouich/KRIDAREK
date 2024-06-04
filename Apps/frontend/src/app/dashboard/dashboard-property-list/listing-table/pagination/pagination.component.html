@@ -1,0 +1,33 @@
+@if(announcementsHydraView["@id"]){
+<div class="pagination-area">
+    <ul class="paginations">
+        @for (page of getPagesArray; track $index) {
+        <li [className]="'page-item' + (page === currentPage ? ' active' : '')">
+            <a href="#" (click)="changePage($event, page)">{{page}}</a>
+        </li>
+        }
+    </ul>
+    <ul class="paginations-buttons">
+        <li>
+            @if(announcementsHydraView["hydra:previous"]){
+            <a href="#" (click)="changePage($event, currentPage-1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14">
+                    <path d="M0 7.00008L7 0L2.54545 7.00008L7 14L0 7.00008Z" />
+                </svg>
+                Prev
+            </a>
+            }
+        </li>
+        <li>
+            @if(announcementsHydraView["hydra:next"]){
+            <a href="#" (click)="changePage($event, currentPage+1)">
+                Next
+                <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+                    <path d="M7 7.00008L0 0L4.45455 7.00008L0 14L7 7.00008Z" />
+                </svg>
+            </a>
+            }
+        </li>
+    </ul>
+</div>
+}

@@ -1,0 +1,47 @@
+@if(announcementsHydraView['@id']){
+<div class="row">
+    <div class="col-lg-12">
+        <div class="pagination-and-next-prev">
+            <div class="pagination">
+                <ul>
+                    @for (page of getPagesArray; track $index) {
+
+                    <li [className]="page === getCurrentPage ? 'active': ''">
+                        <a href="#" (click)="changePage($event, page)">
+                            {{page}}</a>
+                    </li>
+                    }
+                    <!-- <li class="active"><a href="#">01</a></li>
+                    <li><a href="#">02</a></li>
+                    <li><a href="#">03</a></li>
+                    <li><a href="#">04</a></li>
+                    <li><a href="#">05</a></li> -->
+                </ul>
+            </div>
+            <div class="next-prev-btn">
+                <ul>
+                    @if(this.announcementsHydraView["hydra:previous"]){
+                    <li>
+                        <a href="#" (click)="changePage($event,getCurrentPage-1)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14">
+                                <path d="M0 7.00008L7 0L2.54545 7.00008L7 14L0 7.00008Z"></path>
+                            </svg> Précedent
+                        </a>
+                    </li>
+                    }
+                    @if(this.announcementsHydraView["hydra:next"]){
+                    <li>
+                        <a href="#" (click)="changePage($event,getCurrentPage+1)">
+                            Suivant
+                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14">
+                                <path d="M7 7.00008L0 0L4.45455 7.00008L0 14L7 7.00008Z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+}

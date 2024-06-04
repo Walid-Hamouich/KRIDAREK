@@ -1,0 +1,13 @@
+.treac-logo {
+    width: 70px;
+}
+
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
+}
+
+app-footer {
+    margin-top: auto;
+}

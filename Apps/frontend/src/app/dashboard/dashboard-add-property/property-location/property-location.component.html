@@ -1,0 +1,128 @@
+<div class="col-xxl-4 col-xl-3">
+    <div class="add-property-icon-content">
+        <div class="add-property-icon">
+            <img src="assets/img/dashboard/icon/property-location-icon.svg" alt>
+        </div>
+        <h6>Emplacement de la propriété</h6>
+        <span></span>
+    </div>
+</div>
+<div class="col-xxl-8 col-xl-9">
+    <div class="add-property-form-wrapper">
+        <div class="add-property-form-title">
+            <h6>Statut de la propriété</h6>
+        </div>
+        <form [formGroup]="addPropertyForm">
+            <ul class="property-form-radio-btns">
+                <li>
+                    <div class="form-check">
+                        <input formControlName="action" class="form-check-input" type="radio" name="action"
+                            id="exampleRadios1" value="Vent" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            À vendre
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-check">
+                        <input formControlName="action" class="form-check-input" type="radio" name="action"
+                            id="exampleRadios2" value="Location">
+                        <label class="form-check-label" for="exampleRadios2">
+                            À louer
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="form-inner">
+                        <label>Type de propriété*</label>
+                        <select data-ugly-select formControlName="type">
+                            @for (type of types; track $index) {
+                            <option value="{{type}}">{{type}}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <!-- <div class="col-md-6 mb-30">
+                    <div class="form-inner">
+                        <label>État de la propriété*</label>
+                        <select>
+                            <option>Nouvel appartement</option>
+                            <option>Nouvel appartement</option>
+                        </select>
+                    </div>
+                </div> -->
+                <!-- <div class="col-md-6 mb-30">
+                    <div class="form-inner">
+                        <label>Année de construction*</label>
+                        <select>
+                            <option>2023</option>
+                            <option>2022</option>
+                        </select>
+                    </div>
+                </div> -->
+                <!-- <div class="col-md-6 mb-30">
+                    <div class="form-inner">
+                        <label>Dimension*</label>
+                        <select data-ugly-select>s
+                            <option>60 m2</option>
+                            <option>60 m2</option>
+                            <option>70 m2</option>
+                            <option>80 m2</option>
+                            <option>90 m2</option>
+                            <option>100 m2</option>
+                            <option>+120 m2</option>
+
+                        </select>
+                    </div>
+                </div> -->
+                <!-- <div class="col-md-6 mb-30">
+                    <div class="form-inner">
+                        <label>Pays*</label>
+                        <select>
+                            <option>France</option>
+                            <option>Bangladesh</option>
+                        </select>
+                    </div>
+                </div> -->
+                <!-- <div class="col-md-6 mb-30">
+                    <div class="form-inner">
+                        <label>Propriété Ville*</label>
+                        <select>
+                            <option>Menchester city</option>
+                            <option>Menchester city</option>
+                        </select>
+                    </div>
+                </div> -->
+                <div class="col-md-12">
+                    <div class="form-inner mb-30">
+                        <label>Emplacement*</label>
+                        <select formControlName="city" data-ugly-select>
+                            @for (city of cities; track $index) {
+                            <option value="{{city?.id}}">{{city.label}}</option>
+                            }
+                        </select>
+                        @if (validatorChecker.
+                        checkFormControlInitialError(city, isSubmitted)) {
+                        <small class="text-danger">
+                            @if(validatorChecker.checkFormControlError(city, 'required')){
+                            Ce champ est obligatoire
+                            } @else if(validatorChecker.checkFormControlError(city, 'inArray')){
+                            Cette ville est invalide
+                            }
+                        </small>
+                        }
+                    </div>
+                </div>
+                <!-- <div class="col-md-12">
+                    <div class="location-map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3649.5647631857846!2d90.36311167605992!3d23.83407118555764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c14c8682a473%3A0xa6c74743d52adb88!2sEgens%20Lab!5e0!3m2!1sen!2sbd!4v1694943917248!5m2!1sen!2sbd"
+                            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div> -->
+            </div>
+        </form>
+    </div>
+</div>

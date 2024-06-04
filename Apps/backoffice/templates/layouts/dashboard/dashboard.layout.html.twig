@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% set bodyClass = 'layout-fixed sidebar-expand-lg bg-body-tertiary' %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block body %}
+
+	<div class="app-wrapper">
+		{% include "layouts/dashboard/partials/_sidebar.html.twig" %}
+		{% include "layouts/dashboard/partials/_navbar.html.twig" %}
+		<main class="app-main">
+			{{ include('partials/_flash_messages.html.twig') }}
+			{% block content %}{% endblock %}
+		</main>
+		{% include "layouts/dashboard/partials/_footer.html.twig" %}
+	</div>
+{% endblock %}

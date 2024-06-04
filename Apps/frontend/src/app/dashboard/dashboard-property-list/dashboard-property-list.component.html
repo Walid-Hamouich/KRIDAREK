@@ -1,0 +1,20 @@
+<app-title></app-title>
+@if(getSuccessMessage != undefined){
+<p class="text-success">{{getSuccessMessage}}</p>
+}
+<!-- <app-search-area></app-search-area> -->
+@if (getLoading) {
+<app-loader></app-loader>
+} @else {
+@if(getErrorMessage != undefined){
+<p class="text-danger">{{getErrorMessage}}</p>
+}
+@else if(getAnnouncements.length > 0){
+<app-listing-table (newPage)="changePage($event)" [announcements]="getAnnouncements"
+    (delete)="deleteAnnouncement($event)" [announcementsHydraView]="getHydraView"
+    [currentPage]="getCurrentPage"></app-listing-table>
+}
+@else {
+<p>Il y'a aucune annonce créer par vous!</p>
+}
+}
